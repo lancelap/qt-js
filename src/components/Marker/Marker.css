@@ -1,0 +1,19 @@
+.marker {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  list-style-type: none;
+}
+
+.marker.over {
+  border: 1px dashed #000000;
+}
+
+.marker.drag {
+  background-color: red;
+}
+
+.marker__close {
+  float: right;
+}

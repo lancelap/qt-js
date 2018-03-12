@@ -1,0 +1,6 @@
+.map-component {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 25px;
+  max-width: 600px;
+}
