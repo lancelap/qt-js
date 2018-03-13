@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './MapGoogle.css';
 
 class MapGoogle extends Component {
   componentDidUpdate() {
@@ -8,7 +9,7 @@ class MapGoogle extends Component {
   render(){  
     return (
       <div 
-        style={{width: '400px', height: '400px'}} 
+        className="map-google"
         ref={this.props.mapRef}>
       </div>
     )
