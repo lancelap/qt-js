@@ -13,8 +13,8 @@ class ListOfMarkers extends Component {
   }
 
   render() {
-    const { map, googleMaps } = this.props;
-    if(!map || !googleMaps) { return null };
+    const { map, googleMaps, loadedMap } = this.props;
+    if(!loadedMap) { return null };
     let markersCoord = [];
     let markersArr = [];
     this.state.markers.forEach(marker => {

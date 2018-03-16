@@ -9,6 +9,9 @@ class MapComponent extends Component {
     super();
     this.map = null;
     this.googleMaps = null;
+    this.state = {
+      loaded: false
+    };
   }
 
   componentDidMount() {
@@ -24,9 +27,9 @@ class MapComponent extends Component {
       center: { lat, lng },
       zoom,
       mapTypeId
-    })
+    });
 
-    this.forceUpdate();
+    this.setState({ loaded: true });
   }
 
   render() {
@@ -34,7 +37,8 @@ class MapComponent extends Component {
       <div className="map-component">
         <ListOfMarkers
           map={this.map}
-          googleMaps={this.googleMaps}>
+          googleMaps={this.googleMaps}
+          loadedMap={this.state.loaded}>
         </ListOfMarkers>
         <MapGoogle mapRef={this.getMapRef} />
       </div>
