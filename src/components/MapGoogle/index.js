@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './MapGoogle.css';
 
 class MapGoogle extends Component {
@@ -15,5 +16,9 @@ class MapGoogle extends Component {
     )
   }
 }
+
+MapGoogle.propTypes = {
+  mapRef: PropTypes.func.isRequired
+};
 
 export default MapGoogle;

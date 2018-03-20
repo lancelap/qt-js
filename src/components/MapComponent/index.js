@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MapGoogle from '../MapGoogle';
-import ListOfMarkers from '../ListOfMarkers';
+import MarkersListContainer from '../MarkersListContainer';
 import { loadScriptMap } from '../../utils'
 import './MapComponent.css';
 
@@ -35,11 +36,12 @@ class MapComponent extends Component {
   render() {
     return(
       <div className="map-component">
-        <ListOfMarkers
+        <MarkersListContainer
           map={this.map}
           googleMaps={this.googleMaps}
           loadedMap={this.state.loaded}>
-        </ListOfMarkers>
+          
+        </MarkersListContainer>
         <MapGoogle mapRef={this.getMapRef} />
       </div>
     )
@@ -55,6 +57,13 @@ MapComponent.defaultProps = {
   lng: 151.2195, 
   zoom: 8, 
   mapTypeId: 'roadmap'
+};
+
+MapComponent.propTypes = {
+  lat: PropTypes.number, 
+  lng: PropTypes.number, 
+  zoom: PropTypes.number, 
+  mapTypeId: PropTypes.string
 };
 
 export default MapComponent;

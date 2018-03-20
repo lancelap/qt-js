@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import MarkerForm from '../MarkerForm';
-import Marker from '../Marker';
-import Polyline from '../Polyline';
-import './ListOfMarkers.css';
+import MarkersList from './MarkersList';
 
-class ListOfMarkers extends Component {
+class MarkersListContainer extends Component {
   constructor() {
     super();
     this.state = {
@@ -13,39 +10,17 @@ class ListOfMarkers extends Component {
   }
 
   render() {
-    const { map, googleMaps, loadedMap } = this.props;
-    if(!loadedMap) { return null };
-    let markersCoord = [];
-    let markersArr = [];
-    this.state.markers.forEach(marker => {
-      markersCoord.push(marker.coordinates);
-      markersArr.push(
-        <Marker
-          key={marker.id} 
-          id={marker.id} 
-          text={marker.text}
-          coordinates={marker.coordinates}
-          deleteMarker={this.deleteMarker}
-          editMarker={this.editMarker}
-          dragStart={this.dragStart}
-          dragEnd={this.dragEnd}
-          dragEnter={this.dragEnter}
-          dragLeave={this.dragLeave}
-          map={map}
-          googleMaps={googleMaps}>
-        </Marker>
-      )
-    });
-
-    return(
-      <div>
-        <MarkerForm addMarker={this.addMarker} map={map} />
-        <ul className="list-of-markers" onDragOver={this.dragOver}>
-          {markersArr}    
-        </ul>
-        <Polyline coordinates={markersCoord} map={map} googleMaps={googleMaps}/>
-      </div>
-    )
+    return <MarkersList 
+      markers={this.state.markers}
+      dragStart={this.dragStart} 
+      dragEnd={this.dragEnd} 
+      dragOver={this.dragOver} 
+      dragEnter={this.dragEnter} 
+      dragLeave={this.dragLeave} 
+      addMarker={this.addMarker} 
+      editMarker={this.editMarker}
+      deleteMarker={this.deleteMarker}
+      {...this.props} />
   }
 
   dragStart = (e) => {
@@ -107,4 +82,4 @@ class ListOfMarkers extends Component {
   }
 }
 
-export default ListOfMarkers;
+export default MarkersListContainer;
